@@ -7,13 +7,16 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']"  href="#">Home <span class="sr-only">(current)</span></a>
+      <li [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}" >
+        <a class="nav-link"  [routerLink]="['/']"  href="#">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <ul class="navbar-nav navbar-right">
-      <li>
-        <a [routerLink]="['/']" href="#">Home1111 <span class="sr-only">(current)</span></a>
+      <li [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link"    [routerLink]="['/login']" href="#">Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link"   [routerLink]="['/register']" href="#">Registrarse <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

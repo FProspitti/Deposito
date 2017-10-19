@@ -12,11 +12,20 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-right">
-      <li [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}">
+      <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}">
+      <a class="nav-link"    [routerLink]="['/dashboard']" href="#">Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="authService.loggedIn()"[routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}">
+      <a class="nav-link"    [routerLink]="['/profile']" href="#">Perfil <span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link"    [routerLink]="['/login']" href="#">Login <span class="sr-only">(current)</span></a>
       </li>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link"   [routerLink]="['/register']" href="#">Registrarse <span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="authService.loggedIn()">
+        <a class="nav-link" (click)="onLogoutClick()"    href="#">Salir <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private flashMessagesService : FlashMessagesService) {
+              private flashMessages : FlashMessagesService) {
 
   }
 
@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit {
     if(data.success){
       console.log('entra true');
   this.authService.storeUserData(data.token,data.user);
-      this.flashMessagesService.show('Estas logueado',{cssClass: 'alert-succces', timeout:5000})
+      this.flashMessages.show('Se registro el usuario correctamente',{cssClass: 'alert-success', timeout:4000});
       this.router.navigate(['/dashboard']);
     }else{
       console.log('entra false');
-      this.flashMessagesService.show(data.msg,{cssClass: 'alert-danger', timeout:5000})
+      this.flashMessages.show(data.msg,{cssClass: 'alert-danger', timeout:5000})
       this.router.navigate(['/login']);
     }
     });

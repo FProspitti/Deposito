@@ -17,6 +17,10 @@ import {AuthService} from "./services/auth.service";
 import {FlashMessagesModule} from "angular2-flash-messages";
 import {AuthGuard} from "./guards/auth.guard";
 import { UsersComponent } from './components/users/users.component';
+import {DataTableModule, SharedModule} from 'primeng/primeng';
+import {DialogModule} from "primeng/primeng";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/primeng';
 
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -43,7 +47,12 @@ const  appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    DataTableModule,
+    SharedModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    ButtonModule
   ],
   providers: [ValidateService,AuthService, AuthGuard],
   bootstrap: [AppComponent]

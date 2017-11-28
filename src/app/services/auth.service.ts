@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import 'rxjs/add/operator/map'
 import {tokenNotExpired} from "angular2-jwt";
@@ -40,27 +40,39 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
-    console.log("entro");
   }
 
   loadToken() {
     const token = localStorage.getItem('id_token');
-    console.log("token");
-    console.log(token);
     this.authToken = token;
-    console.log("entro load");
   }
 
   loggedIn() {
-    console.log("loggedIn");
-    console.log(tokenNotExpired());
     return tokenNotExpired('id_token');
- }
+  }
 
-logout(){
-    this.authToken=null;
-    this.user=null;
+  logout() {
+    this.authToken = null;
+    this.user = null;
     localStorage.clear();
+  }
+
+  getUsers() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.get('http://localhost:3000/users/users', {headers: headers})
+      .map(res => res.json());
+  }
+
+  deleteUser(user) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.post('http://localhost:3000/users/deleteUser', user , {headers: headers})
+      .map(res => res.json());
   }
 
 }

@@ -29,14 +29,11 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
     this.authService.authenticateUser(user).subscribe(data => {
-      console.log(data);
     if(data.success){
-      console.log('entra true');
   this.authService.storeUserData(data.token,data.user);
       this.flashMessages.show('Se registro el usuario correctamente',{cssClass: 'alert-success', timeout:4000});
       this.router.navigate(['/dashboard']);
     }else{
-      console.log('entra false');
       this.flashMessages.show(data.msg,{cssClass: 'alert-danger', timeout:5000})
       this.router.navigate(['/login']);
     }

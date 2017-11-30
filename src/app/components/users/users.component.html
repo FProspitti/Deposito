@@ -1,4 +1,4 @@
-<p-dataTable [value]="usuarios" selectionMode="single" [(selection)]="selectedUser" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+<p-dataTable [value]="usuarios" selectionMode="single" [(selection)]="selectedUser" (onRowDblclick)="onRowSelect($event)"   [paginator]="true" rows="15" [responsive]="true">
   <p-header>Usuarios</p-header>
   <p-column field="name" header="Nombre" [filter]="true" ></p-column>
   <p-column field="email" header="Email"></p-column>

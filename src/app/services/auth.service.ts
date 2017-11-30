@@ -71,8 +71,19 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('content-type', 'application/json');
-    return this.http.post('http://localhost:3000/users/deleteUser', user , {headers: headers})
+    return this.http.put('http://localhost:3000/users/deleteUser', user , {headers: headers})
       .map(res => res.json());
+
+  }
+
+  updateUser(user) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.put('http://localhost:3000/users/updateUser', user , {headers: headers})
+      .map(res => res.json());
+
   }
 
 }

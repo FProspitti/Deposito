@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private flashMessages:FlashMessagesService) {
+              private flashMessages: FlashMessagesService) {
   }
 
   ngOnInit() {
@@ -33,35 +33,37 @@ export class UsersComponent implements OnInit {
   }
 
   save() {
-    // let usuarios = [...this.usuarios];
-    // if(this.newUser)
-    //   usuarios.push(this.user);
-    // else
-    //   usuarios[this.findSelectedUserIndex()] = this.user;
-    //
-    // this.cars = cars;
+    console.log("user");
+    console.log(this.user);
+    if (this.newUser) {
+      this.authService.registerUser(this.user).subscribe(data => {
+        if (data.success) {
+          this.flashMessages.show('Se registro el usuario correctamente', {cssClass: 'alert-success', timeout: 4000})
+        } else {
+          this.flashMessages.show('No se pudo registrar el usuario', {cssClass: 'alert-danger', timeout: 4000})
+        }
+      });
+    } else {
+      this.authService.updateUser(this.user).subscribe(data => {
+        if (data.success) {
+          this.flashMessages.show('Se borro el usuario correctamente', {cssClass: 'alert-success', timeout: 4000})
+        } else {
+          this.flashMessages.show('No se pudo borrar el usuario', {cssClass: 'alert-danger', timeout: 4000})
+        }
+      });
 
-    this.authService.registerUser(this.user).subscribe(data => {
-      if (data.success) {
-        this.flashMessages.show('Se registro el usuario correctamente', {cssClass: 'alert-success', timeout: 4000})
-      } else {
-        this.flashMessages.show('No se pudo registrar el usuario', {cssClass: 'alert-danger', timeout: 4000})
-      }
-      this.user = null;
-      this.displayDialog = false;
-      this.cargarTabla();
-    });
+    }
+    this.user = null;
+    this.displayDialog = false;
+    this.cargarTabla();
   }
 
   delete() {
-    // let index = this.findSelectedUserIndex();
-    // this.cars = this.cars.filter((val,i) => i!=index);
-    // this.car = null;
     this.authService.deleteUser(this.user).subscribe(data => {
       if (data.success) {
-        this.flashMessages.show('Se registro el usuario correctamente', {cssClass: 'alert-success', timeout: 4000})
+        this.flashMessages.show('Se borro el usuario correctamente', {cssClass: 'alert-success', timeout: 4000})
       } else {
-        this.flashMessages.show('No se pudo registrar el usuario', {cssClass: 'alert-danger', timeout: 4000})
+        this.flashMessages.show('No se pudo borrar el usuario', {cssClass: 'alert-danger', timeout: 4000})
       }
       this.user = null;
       this.displayDialog = false;
@@ -86,7 +88,8 @@ export class UsersComponent implements OnInit {
   findSelectedUserIndex(): number {
     return this.usuarios.indexOf(this.selectedUser);
   }
-  cargarTabla(){
+
+  cargarTabla() {
     this.authService.getUsers().subscribe(usuarios => {
       this.usuarios = usuarios;
 

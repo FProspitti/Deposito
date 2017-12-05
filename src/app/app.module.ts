@@ -21,6 +21,7 @@ import {DataTableModule, SharedModule} from 'primeng/primeng';
 import {DialogModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/primeng';
+import {ContextMenuModule} from "primeng/primeng";
 
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -52,7 +53,9 @@ const  appRoutes: Routes = [
     SharedModule,
     DialogModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    ContextMenuModule
+
   ],
   providers: [ValidateService,AuthService, AuthGuard],
   bootstrap: [AppComponent]

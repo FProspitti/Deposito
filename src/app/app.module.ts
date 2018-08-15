@@ -22,6 +22,7 @@ import {DialogModule} from "primeng/primeng";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/primeng';
 import {ContextMenuModule} from "primeng/primeng";
+import { UnidadesComponent } from './components/unidades/unidades.component';
 
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,7 +30,8 @@ const  appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path: 'unidades', component: UnidadesComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -41,7 +43,8 @@ const  appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    UsersComponent
+    UsersComponent,
+    UnidadesComponent
   ],
   imports: [
     BrowserModule,

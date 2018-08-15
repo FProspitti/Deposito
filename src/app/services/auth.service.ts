@@ -86,4 +86,41 @@ export class AuthService {
 
   }
 
+  deleteUnidad(unidad) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.put('http://localhost:3000/unidades/deleteUnidad', unidad , {headers: headers})
+      .map(res => res.json());
+
+  }
+
+  updateUnidad(unidad) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.put('http://localhost:3000/unidades/updateUnidad', unidad , {headers: headers})
+      .map(res => res.json());
+
+  }
+
+  newUnidad(unidad) {
+    let headers = new Headers();
+    headers.append('content-type', 'application/json');
+    return this.http.post('http://localhost:3000/unidades/nuevaUnidad', unidad, {headers: headers})
+      .map(res => res.json());
+  }
+
+  getUnidades() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.get('http://localhost:3000/unidades/unidades', {headers: headers})
+      .map(res => res.json());
+  }
+
+
 }

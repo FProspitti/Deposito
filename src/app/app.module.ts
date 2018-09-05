@@ -23,6 +23,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ButtonModule} from 'primeng/primeng';
 import {ContextMenuModule} from "primeng/primeng";
 import { UnidadesComponent } from './components/unidades/unidades.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { EstadosComponent } from './components/estados/estados.component';
+import { ConsultasComponent } from './components/consultas/consultas.component';
+import { NuevoComponent } from './components/nuevo/nuevo.component';
 
 const  appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,7 +35,11 @@ const  appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'users', component: UsersComponent, canActivate:[AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path: 'unidades', component: UnidadesComponent, canActivate:[AuthGuard]}
+  {path: 'unidades', component: UnidadesComponent, canActivate:[AuthGuard]},
+  {path: 'clientes', component: ClientesComponent, canActivate:[AuthGuard]},
+  {path: 'estados', component: EstadosComponent, canActivate:[AuthGuard]},
+  {path: 'consultas', component: ConsultasComponent, canActivate:[AuthGuard]},
+  {path: 'nuevo', component: NuevoComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
@@ -44,7 +52,11 @@ const  appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     UsersComponent,
-    UnidadesComponent
+    UnidadesComponent,
+    ClientesComponent,
+    EstadosComponent,
+    ConsultasComponent,
+    NuevoComponent
   ],
   imports: [
     BrowserModule,

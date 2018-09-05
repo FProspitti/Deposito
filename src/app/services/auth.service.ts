@@ -122,5 +122,41 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  deleteCliente(cliente) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.put('http://localhost:3000/clientes/deleteCliente', cliente , {headers: headers})
+      .map(res => res.json());
+
+  }
+
+  updateCliente(cliente) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.put('http://localhost:3000/clientes/updateCliente', cliente , {headers: headers})
+      .map(res => res.json());
+
+  }
+
+  newCliente(cliente) {
+    let headers = new Headers();
+    headers.append('content-type', 'application/json');
+    return this.http.post('http://localhost:3000/clientes/nuevoCliente', cliente, {headers: headers})
+      .map(res => res.json());
+  }
+
+  getClientes() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('content-type', 'application/json');
+    return this.http.get('http://localhost:3000/clientes/clientes', {headers: headers})
+      .map(res => res.json());
+  }
+
 
 }
